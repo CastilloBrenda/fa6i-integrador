@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+  </html>
+  <body>
+    <section>
+      <h4>Listas activas</h4>
+      <ul>
+      {% for elem in lists %}
+        <li>{{ elem.titulo }}</li>
+        <form action="todo/delete" method="POST">
+          <input type="submit" value="Borrar">
+        </form>
+      {% endfor %}
+      </ul>
+    </section>
+
+    <section>
+      <form action="{{ url_for('agregarLista') }}" method="POST">
+        <label for="titulo">Titulo</label>
+        <input type="text" name="titulo">
+        <input type="submit" value="Nuevo">
+      </form>
+    </section>
+  </body>
+</html>

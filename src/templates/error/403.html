@@ -1,0 +1,13 @@
+{% extends "error/error_base.html" %}
+{% block content %}
+  <div class="jumbotron">
+    <h1>403 - No Autorizado</h1>
+    <p>Usted no está autorizado a ver este sitio.</p>
+    {% if not auth.logged_in() %}
+      <p>Usted no ha iniciado sesión, puede hacerlo si desea.</p>
+      <p>
+        <a class="btn btn-primary btn-lg" href="{{url_for('login')}}" role="button">Iniciar Sesión</a>
+      </p>
+    {% endif %}
+  </div>
+{% endblock %}
