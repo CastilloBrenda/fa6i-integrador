@@ -12,10 +12,18 @@ def home():
     return render_template("index.html",  lists=todo_lists.todas())
 
 @app.route('/todo/agregar', methods=['POST'])
+@db_session
 def agregarLista():
-    return "TODO"
+   todo_lists.nuevo(request.form.get('titulo'))
+   return render_template("index.html",  lists=todo_lists.todas())
+
+@app.route('/todo/borrar', methods=['POST'])
+@db_session
+def borrarLista():
+    todo_lists.borrar(request.form.get('titulo'))
+    return render_template("index.html",  lists=todo_lists.todas())
 
 @app.route('/todo/<id>')
 @db_session
 def showTodos(id):
-    return render_template("todos.html", todos=todo_list.todosLosTodosDeLaLista(id))
+    return render_template("todos.html", todos=todo_lists.todosLosTodosDeLaLista(id))

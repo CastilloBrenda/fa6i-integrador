@@ -9,7 +9,7 @@
       <ul>
       {% for elem in lists %}
         <li>{{ elem.titulo }}</li>
-        <form action="todo/delete" method="POST">
+        <form action="{{ url_for('borrarLista') }}" method="POST">
           <input type="submit" value="Borrar">
         </form>
       {% endfor %}
